@@ -1,0 +1,207 @@
+/****** BASE ******/
+
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+:root {
+  --primary-text-very-dark-desaturated-blue: hsl(238, 29%, 16%);
+  --primary-text-soft-red: hsl(14, 88%, 65%);
+  --primary-gradient-soft-violet: hsl(273, 75%, 66%);
+  --primary-gradient-soft-blue: hsl(240, 73%, 65%);
+  --neutral-text-very-dark-grayish-blue: hsl(237, 12%, 33%);
+  --neutral-text-dark-grayish-blue: hsl(240, 6%, 50%);
+  --neutral-dividers-light-grayish-blue: hsl(240, 5%, 91%);
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 12px;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    var(--primary-gradient-soft-violet),
+    var(--primary-gradient-soft-blue)
+  );
+  padding: 150px 25px 25px 25px;
+  color: var(--primary-text-very-dark-desaturated-blue);
+}
+
+main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/****** MOBILE VERSION OF ACCORDION CARD ******/
+
+.accordion-card {
+  position: relative;
+  background: url(../images/bg-pattern-mobile.svg) white no-repeat;
+  background-position: left 50% top;
+  width: 100%;
+  max-width: 920px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.accordion-card__box-illustration {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 40%;
+  left: -93px;
+}
+
+.accordion-card__illustration {
+  position: relative;
+  height: 140px;
+}
+
+.accordion-card__illustration > img {
+  position: absolute;
+}
+
+.accordion-card__illustration--mobile {
+  display: block;
+  top: -107px;
+  left: 50%;
+  transform: translate(-56%, 0);
+}
+
+.accordion-card__illustration--desktop {
+  display: none;
+}
+
+.accordion-card__content {
+  color: var(--neutral-text-dark-grayish-blue);
+  padding: 0 25px 50px 25px;
+}
+
+.accordion-card__content a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--primary-text-very-dark-desaturated-blue);
+  margin-bottom: 20px;
+}
+
+.accordion-card__tab {
+  display: inline-block;
+  padding: 20px 0;
+  width: 100%;
+  border-bottom: solid 1px var(--neutral-dividers-light-grayish-blue);
+}
+
+.question {
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.5s ease;
+}
+
+.question img {
+  transition: all 0.5s ease;
+}
+
+.accordion-card__tab:hover .question {
+  color: var(--primary-text-soft-red);
+}
+
+.accordion-card__tab:focus .question {
+  margin-bottom: 20px;
+}
+
+.accordion-card__tab:focus .question p {
+  font-weight: 700;
+  color: var(--primary-text-very-dark-desaturated-blue);
+}
+
+.accordion-card__tab:focus .question img {
+  transform: rotate(-180deg);
+}
+
+.answer {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.accordion-card__tab:focus .answer {
+  height: auto;
+  visibility: visible;
+  line-height: 1.2rem;
+}
+
+.attribution {
+  margin-top: 15px;
+  color: white;
+}
+
+/****** RESPONSIVE ******/
+
+@media screen and (min-width: 970px) {
+  body {
+    padding: 25px;
+  }
+
+  .accordion-card {
+    flex-direction: row;
+    padding: 0;
+    background: white;
+  }
+
+  .accordion-card > div {
+    box-sizing: border-box;
+    width: 50%;
+  }
+
+  .accordion-card__box-illustration {
+    display: block;
+  }
+
+  .accordion-card__illustration {
+    position: relative;
+    height: 100%;
+    background: url(../images/bg-pattern-desktop.svg) no-repeat;
+    background-position: left 113% top 60%;
+    overflow: hidden;
+  }
+
+  .accordion-card__illustration--mobile {
+    display: none;
+  }
+
+  .accordion-card__illustration--desktop {
+    display: block;
+    top: 10%;
+    left: -80px;
+  }
+
+  .accordion-card__content {
+    padding: 70px 95px 70px 0;
+  }
+
+  h1 {
+    text-align: left;
+  }
+
+  .attribution {
+    position: absolute;
+    bottom: 0;
+  }
+}
